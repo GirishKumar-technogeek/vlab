@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>INTERFACE LED, SWITCH and BUZZER with IoT Kit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body onload="createBoards()">
+  <h3 style="text-align: center;">Internet of Things Laboratory</h3>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" id="modal1" style="display: none;">
+    
+  </button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5" id="modal5" style="display: none;">
+    
+  </button>
+<div class="container">
+
+    <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="pills-exp-tab" data-toggle="pill" href="#procedure" role="tab" aria-controls="pills-home" aria-selected="true" onclick="clearScreen()">Experiment</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-code-tab" data-toggle="pill" href="#code" role="tab" aria-controls="pills-home" aria-selected="false" onclick="clearScreen()">Code</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-simulator-tab" data-toggle="pill" href="#simulator" role="tab" aria-controls="pills-profile" aria-selected="false" onclick="clearScreen()">Simulator</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-final-tab" data-toggle="pill" href="#finalsimulation" role="tab" aria-controls="pills-profile" aria-selected="false" onclick="clearScreen()">Final Simulation</a>
+        </li>
+    </ul>
+    
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="procedure" role="tabpanel" aria-labelledby="pills-exp-tab">
+          <h3 style="text-align: center;">Experiment to interface with IoT Kit to demonstrate the Working of LED,SWITCH and BUZZER</h3>
+          <div class="card">
+            <h5 class="card-header">Aim</h5>
+            <div class="card-body">
+              <p class="card-text">
+                To demonstrate the working of LED, SWITCH and BUZZER by interfacing with IoT kit.
+              </p>
+            </div>
+          </div><br>
+          <div class="card">
+            <h5 class="card-header">Procedure</h5>
+            <div class="card-body">
+              <div class="card">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">This simulator allows users to simulate interfacing of LED,Buzzer,Switch with Raspberry Pi board.</li>
+                  <li class="list-group-item">In the Experiment tab, you can get to know the aim of this experiment,how to work with this simulator and a code reference enabling you to program the raspberry pi board.</li>
+                  <li class="list-group-item">Using the given code below, program the raspberry pi board.</li>
+                  <li class="list-group-item">Once you finished programming the board,click on the check code button.If you get a success message you can proceed for the simulation, Else please take a look at the code and reprogram the board.</li>
+                  <li class="list-group-item">In the simulation part, you can connect the LED,buzzer,push button,ground connections with a click of button.</li>
+                  <li class="list-group-item">Click on the Connect LED,Connect Buzzer,Connect Button,Connect Gnd Connections buttons to connect the components with GPIO pins.</li>
+                  <li class="list-group-item">Once you connect all the components, click the simulate button which will check the correctness of the circuit and gives you the result as alert.</li>
+                  <li class="list-group-item">Once the simulation is successful click on the final simulation tab.</li>
+                  <li class="list-group-item">Click the Push button and you can note that LED and buzzer is in ON state for the time interval you mentioned during the programming step.</li>
+                </ul>
+              </div>
+            </div>
+          </div><br>
+          <div class="card">
+            <h5 class="card-header">Code</h5>
+            <div class="card-body">
+              <pre>
+                <code>
+                  import time,RPi.GPIO as GPIO
+                  GPIO.setmode(GPIO.BOARD)
+                  GPIO.setup(11, GPIO.OUT) #LED
+                  GPIO.setup(13,GPIO.OUT) #BUZZER
+                  GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+                  try:
+                    while True:
+                      button_state = GPIO.input(23)
+                      if button_state == False:
+                        GPIO.output(11, True)
+                        GPIO.output(13, True)
+                        print('Button Pressed...')
+                        time.sleep(0.2)
+                      else:
+                        GPIO.output(13, False)
+                        GPIO.output(11, False)
+                        print('Button Released...')
+                  except:
+                    GPIO.cleanup()
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show" id="code" role="tabpanel" aria-labelledby="pills-code-tab">
+            <form name="iot1">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon3">import</span>
+                    </div>
+                    <input type="text" class="form-control" aria-describedby="basic-addon3" name="import" onchange="importMods()">
+                    <div class="hint">Import time, RPi.GPIO as GPIO</div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="setboard" onchange="setBoard()">
+                    <div class="hint">Set GPIO mode to BOARD</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">GPIO.setup(</span>
+                    </div>
+                    <input type="number" class="form-control"  min="1" max="40" name="pin_for_led" onchange="setLED()">
+                    <div class="input-group-append">
+                      <span class="input-group-text">, GPIO.OUT)</span>
+                    </div>
+                    <div class="hint">Set GPIO pin where LED output goes...(Note:This value is checked with raspberry pi pin config and enables submission of the code)</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">GPIO.setup(</span>
+                    </div>
+                    <input type="number" class="form-control"  min="1" max="40" name="pin_for_buzzer" onchange="setBuzzer()">
+                    <div class="input-group-append">
+                      <span class="input-group-text">, GPIO.OUT)</span>
+                    </div>
+                    <div class="hint">Set GPIO pin where Buzzer output goes...(Note:This value is checked with raspberry pi pin config and enables submission of the code)</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">GPIO.setup(</span>
+                    </div>
+                    <input type="number" class="form-control"  min="1" max="40" name="pin_for_button" onchange="setButton()">
+                    <div class="input-group-append">
+                      <span class="input-group-text">, GPIO.IN, pull_up_down=GPIO.PUD_UP)</span>
+                    </div>
+                    <div class="hint">Set GPIO pin where Button input goes...(Note:This value is checked with raspberry pi pin config and enables submission of the code)</div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" value="try:" readonly>
+                    <div class="hint">Your try block begins here</div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" value="while True:" readonly>
+                    <div class="hint">Your Infinite Loop begins here</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">button_state = GPIO.input(</span>
+                    </div>
+                    <input type="number" class="form-control"  min="1" max="40" style="width: 50px;" name="pin_for_button_inp">
+                    <div class="input-group-append">
+                      <span class="input-group-text">)</span>
+                    </div>
+                    <div class="hint">Set the GPIO pin that gets grounded when the button gets pressed...(Note:This value must be same as the GPIO Pin number of the button circuit)</div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" value="if button_state==False:" readonly>
+                    <div class="hint">Write Logic when the button is pressed i.e when the button GPIO pin is grounded or the state is False</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">GPIO.output(</span>
+                    </div>
+                    <input type="number" class="form-control"  min="1" max="40" name="pin_for_led_op">
+                    <div class="input-group-append">
+                      <span class="input-group-text">, True)</span>
+                    </div>
+                    <div class="hint">Send Output to LED...(Note:This value must be same as the GPIO Pin number of the LED circuit)</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">GPIO.output(</span>
+                    </div>
+                    <input type="number" class="form-control"  min="1" max="40" name="pin_for_buzzer_op">
+                    <div class="input-group-append">
+                      <span class="input-group-text">, True)</span>
+                    </div>
+                    <div class="hint">Send Output to Buzzer...(Note:This value must be same as the GPIO Pin number of the Buzzer circuit)</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">print("</span>
+                    </div>
+                    <input type="text" class="form-control" name="pressed_text" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">")</span>
+                    </div>
+                    <div class="hint">Custom Text msg to be printed when button is pressed</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">time.sleep(</span>
+                    </div>
+                    <input type="number" class="form-control" step=".1" name="sleep_time" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">)</span>
+                    </div>
+                    <div class="hint">Enter value in seconds</div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" value="else:" readonly>
+                    <div class="hint">Write Logic when the button is released i.e when the button GPIO pin is not grounded or the state is True</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">GPIO.output(</span>
+                    </div>
+                    <input type="number" class="form-control"  min="1" max="40" name="pin_for_led_op_false">
+                    <div class="input-group-append">
+                      <span class="input-group-text">, False)</span>
+                    </div>
+                    <div class="hint">Send Output to LED...(Note:This value must be same as the GPIO Pin number of the LED circuit)</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">GPIO.output(</span>
+                    </div>
+                    <input type="number" class="form-control"  min="1" max="40"  name="pin_for_buzzer_op_false">
+                    <div class="input-group-append">
+                      <span class="input-group-text">, False)</span>
+                    </div>
+                    <div class="hint">Send Output to Buzzer...(Note:This value must be same as the GPIO Pin number of the Buzzer circuit)</div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">print("</span>
+                    </div>
+                    <input type="text" class="form-control" name="released_text" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">")</span>
+                    </div>
+                    <div class="hint">Custom Text msg to be printed when button is released</div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" value="except:" readonly>
+                    <div class="hint">Your except block begins here</div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" value="GPIO.cleanup()" readonly>
+                    <div class="hint">Your Program Ends Here</div>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="setValues()">Check Code and move to simulation</button>
+                </div>               
+            </form>
+        </div>
+        <div class="tab-pane fade show" id="simulator" role="tabpanel" aria-labelledby="pills-simulator-tab">
+          <div class="table-responsive-sm">
+            <table class="table table-sm table-dark table-borderless" style="font-size:xx-small;text-align: center;">
+              <tr>
+                <td>
+                  <div class="outer circle white">
+                    <div class="inner circle black" id="39">39
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="37"><p class="pin-black">37</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green" >
+                    <div class="inner circle white" id="35"><p class="pin-black">35</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="33"><p class="pin-black">33</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="31"><p class="pin-black">31</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="29"><p class="pin-black">29</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="27"><p class="pin-black">27</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle white">
+                    <div class="inner circle black" id="25">25
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle blue">
+                    <div class="inner circle white" id="23"><p class="pin-black">23</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle blue">
+                    <div class="inner circle white" id="21"><p class="pin-black">21</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle blue">
+                    <div class="inner circle white" id="19"><p class="pin-black">19</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle orange">
+                    <div class="inner circle white" id="17"><p class="pin-black">17</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="15"><p class="pin-black">15</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="13"><p class="pin-black">13</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="11"><p class="pin-black">11</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle white">
+                    <div class="inner circle black" id="9">9
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="7"><p class="pin-black">7</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle violet">
+                    <div class="inner circle white" id="5"><p class="pin-black">5</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle violet">
+                    <div class="inner circle white" id="3"><p class="pin-black">3</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer rounded orange">
+                    <div class="inner circle white" id="1"><p class="pin-black">1</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="40"><p class="pin-black">40</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="38"><p class="pin-black">38</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="36"><p class="pin-black">36</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle white">
+                    <div class="inner circle black" id="34">34
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="32"><p class="pin-black">32</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle white">
+                    <div class="inner circle black" id="30">30
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="28"><p class="pin-black">28</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle blue">
+                    <div class="inner circle white" id="26"><p class="pin-black">26</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle blue">
+                    <div class="inner circle white" id="24"><p class="pin-black">24</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="22"><p class="pin-black">22</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle white">
+                    <div class="inner circle black" id="20">20
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="18"><p class="pin-black">18</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="16"><p class="pin-black">16</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle white">
+                    <div class="inner circle black" id="14">14
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle green">
+                    <div class="inner circle white" id="12"><p class="pin-black">12</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle violet">
+                    <div class="inner circle white" id="10"><p class="pin-black">10</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle violet">
+                    <div class="inner circle white" id="8"><p class="pin-black">8</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle white">
+                    <div class="inner circle black" id="6">6
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle red">
+                    <div class="inner circle white" id="4"><p class="pin-black">4</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="outer circle red">
+                    <div class="inner circle white" id="2"><p class="pin-black">2
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          
+          <div class="ground-connections">
+            <div class="table-responsive-sm">
+              <table class="table table-sm breadboard" id="groundbread">
+              </table>
+              </div>
+          </div>
+          <br><br>
+
+          <div class="row row-cols-1 row-cols-md-3">
+            <div class="col mb-4">
+              <div class="card h-100">
+                <img src="images/led.png" class="card-img-top" alt="LED" style="height: 150px;width:150px;margin-left: auto;margin-right: auto;">
+                <div class="card-body" style="margin-left: auto;margin-right: auto;display: block;">
+                    <div class="outer circle red" style="margin-left:auto;margin-right: auto;display: inline-block;">
+                      <div class="inner circle white" id="ledin"></div>
+                    </div>
+                    <div class="outer circle green" style="margin-left:auto;margin-right: auto;display: inline-block;">
+                      <div class="inner circle white" id="ledout"></div>
+                    </div>
+                    <br>&plus; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &minus;
+                  </div>
+              </div>
+            </div>
+            <div class="col mb-4">
+              <div class="card h-100">
+                <img src="images/buzzer.png" class="card-img-top" alt="Buzzer" style="height: 150px;width:150px;margin-left: auto;margin-right: auto;">
+                <div class="card-body" style="margin-left: auto;margin-right: auto;display: block;">
+                  <div class="outer circle red" style="margin-left:auto;margin-right: auto;display: inline-block;">
+                    <div class="inner circle white" id="buzzerin"></div>
+                  </div>
+                  <div class="outer circle green" style="margin-left:auto;margin-right: auto;display: inline-block;">
+                    <div class="inner circle white" id="buzzerout"></div>
+                  </div>
+                  <br>&plus; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &minus;
+                </div>
+              </div>
+            </div>
+            <div class="col mb-4">
+              <div class="card h-100">
+                <img src="images/button.png" class="card-img-top" alt="Button" style="height: 150px;width:150px;margin-left: auto;margin-right: auto;transform: rotate(90deg);">
+                <div class="card-body" style="margin-left: auto;margin-right: auto;display: block;">
+                    <div class="outer circle red" style="margin-left:auto;margin-right: auto;display: inline-block;">
+                      <div class="inner circle white" id="buttonin"></div>
+                    </div>
+                    <div class="outer circle green" style="margin-left:auto;margin-right: auto;display: inline-block;">
+                      <div class="inner circle white" id="buttonout"></div>
+                    </div>
+                    <br>GPIO Gnd
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              Connect
+            </div>
+            <div class="card-body">
+              <label class="switch">
+                <input type="checkbox" id="connectled" data-toggle="modal" data-target="#exampleModal2">
+                <span class="slider round"></span>
+              </label>
+              LED
+              <label class="switch">
+                <input type="checkbox" id="connectbuzzer" data-toggle="modal" data-target="#exampleModal3">
+                <span class="slider round"></span>
+              </label>        
+              Buzzer 
+              <label class="switch">
+                <input type="checkbox" id="connectbutton" data-toggle="modal" data-target="#exampleModal4">
+                <span class="slider round"></span>
+              </label>   
+              Push Button    
+              <label class="switch">
+                <input type="checkbox" id="connectledgnd">
+                <span class="slider round"></span>
+              </label>   
+              LED Ground
+              <label class="switch">
+                <input type="checkbox" id="connectbuzzergnd">
+                <span class="slider round"></span>
+              </label>   
+              Buzzer Ground
+              <label class="switch">
+                <input type="checkbox" id="connectgnd">
+                <span class="slider round"></span>
+              </label>   
+              Push Button Ground
+              <label class="switch">
+                <input type="checkbox" id="final_simulate">
+                <span class="slider round"></span>
+              </label>   
+              Simulate
+            </div>
+          </div>
+          
+        </div>
+        <div class="tab-pane fade show" id="finalsimulation" role="tabpanel" aria-labelledby="pills-final-tab">
+          <img id="led" src="images/ledoff.png" width="100" height="180" style="display: block;margin-left: auto;margin-right: auto;">
+          <img id="buzzer" src="images/buzzer.png" width="100" height="180" style="display: block;margin-left: auto;margin-right: auto;">
+          <audio id="chatAudio" >
+            <source src=
+        "https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3"
+            type="audio/mpeg">
+          </audio><br>
+          <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="changeImage()">Push Button</button>
+          <p>Test Results : </p>
+          What are the python modules used in this experiment ?
+          <p id="result1"></p>
+          When connecting the LED is a resistor needed in a real time circuit?
+          <p id="result2"></p>
+          This Piezo buzzer is used for what?
+          <p id="result3"></p>
+          This push button is connected to the GPIO pin in what mode?
+          <p id="result4"></p>
+          Intrinsically _________________ are a very linear device. 
+          <p id="result5"></p>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">What are the python modules used in this experiment ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return checkCodeTest(this);">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="a">
+            <label class="form-check-label" for="exampleRadios1">
+              a) time,RPi
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="b">
+            <label class="form-check-label" for="exampleRadios2">
+              b) socket 
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="c">
+            <label class="form-check-label" for="exampleRadios3">
+              c) requests
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="d">
+            <label class="form-check-label" for="exampleRadios4">
+              d)time,difflib
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Check Test</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p id="results1"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">When connecting the LED is a resistor needed in a real time circuit?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return checkTest1(this);">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="a">
+              <label class="form-check-label" for="exampleRadios1">
+                a) Yes, inorder not to damage the board
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="b">
+              <label class="form-check-label" for="exampleRadios2">
+                b) No not needed
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Check Test</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p id="results2"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">This Piezo buzzer is used for what?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return checkTest2(this);">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="a">
+            <label class="form-check-label" for="exampleRadios1">
+              a) to generate a beep sound when power supplied to it.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="b">
+            <label class="form-check-label" for="exampleRadios2">
+              b) it will generate beep sound full time.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Check Test</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <p id="results3"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">This push button is connected to the GPIO pin in what mode?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return checkTest3(this);">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="a">
+            <label class="form-check-label" for="exampleRadios1">
+              a) Pull Down
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="b">
+            <label class="form-check-label" for="exampleRadios2">
+              b) Pull Up
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Check Test</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <p id="results4"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Intrinsically _________________ are a very linear device.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="return checkSimulatorTest(this);">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="a">
+            <label class="form-check-label" for="exampleRadios1">
+              a) Injection lasers 
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="b">
+            <label class="form-check-label" for="exampleRadios2">
+              b) DH lasers
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="c">
+            <label class="form-check-label" for="exampleRadios3">
+              c) Gain-guided 
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="d">
+            <label class="form-check-label" for="exampleRadios4">
+              d) LEDs
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Check Test</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p id="results5"></p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/gpio_pins.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  let is_code_crct = false,modules=false,board=false,led_set=false,buzzer_set=false,button_set=false,gnd_set=false,led_gnd=false,buzzer_gnd=false;
+  let led_pin=0,buzzer_pin=0,button_pin=0,sleep_time=0,pressed_text,released_text;
+  let iot1 = document.forms["iot1"];
+
+  $('#pills-code-tab').click(function () {
+    $('#modal1').trigger('click');
+  })
+
+  $('#pills-final-tab').click(function () {
+    $('#modal5').trigger('click');
+  })
+
+  function checkCodeTest(form){
+    if(form.exampleRadios.value == 'a'){
+      document.getElementById('result1').innerHTML = "Answer is correct";
+      document.getElementById('results1').innerHTML = "Answer is correct";
+    }
+    else{
+      document.getElementById('result1').innerHTML = "Answer is not correct... Correct answer is : a) time,RPi";
+      document.getElementById('results1').innerHTML = "Answer is not correct... Correct answer is : a) time,RPi";
+    }
+    return false;
+  }
+
+  function checkSimulatorTest(form){
+    if(form.exampleRadios.value == 'd'){
+      document.getElementById('result5').innerHTML = "Answer is correct";
+      document.getElementById('results5').innerHTML = "Answer is correct";
+    }
+    else{
+      document.getElementById('result5').innerHTML = "Answer is not correct... Correct answer is : d) LEDs";
+      document.getElementById('results5').innerHTML = "Answer is not correct... Correct answer is : d) LEDs";
+    }
+    return false;
+  }
+
+  function checkTest1(form){
+    if(form.exampleRadios.value == 'a'){
+      document.getElementById('results2').innerHTML = "Answer is correct";
+      document.getElementById('result2').innerHTML = "Answer is correct";
+    }
+    else{
+      document.getElementById('results2').innerHTML = "Answer is not correct... Correct answer is : a) Yes, inorder not to damage the board";
+      document.getElementById('result2').innerHTML = "Answer is not correct... Correct answer is : a) Yes, inorder not to damage the board";
+    }
+    return false;
+  }
+
+  
+  function checkTest2(form){
+    if(form.exampleRadios.value == 'a'){
+      document.getElementById('results3').innerHTML = "Answer is correct";
+      document.getElementById('result3').innerHTML = "Answer is correct";
+    }
+    else{
+      document.getElementById('results3').innerHTML = "Answer is not correct... Correct answer is : a) to generate a beep sound when power supplied to it.";
+      document.getElementById('result3').innerHTML = "Answer is not correct... Correct answer is : a) to generate a beep sound when power supplied to it.";
+    }
+    return false;
+  }
+  
+  function checkTest3(form){
+    if(form.exampleRadios.value == 'a'){
+      document.getElementById('results4').innerHTML = "Answer is correct";
+      document.getElementById('result4').innerHTML = "Answer is correct";
+    }
+    else{
+      document.getElementById('results4').innerHTML = "Answer is not correct... Correct answer is : a) Pull Down";
+      document.getElementById('result4').innerHTML = "Answer is not correct... Correct answer is : a) Pull Down";
+    }
+    return false;
+  }
+
+  function createBoards(){
+    fillGroundConnections();
+  }
+
+  function importMods(){
+      if(iot1["import"].value.split(" ").join("") == 'time,RPi.GPIOasGPIO'){
+          modules = true;
+          alert("Time and Raspberry Pi module imported successfully");
+      }
+  }
+  
+  function setBoard(){
+      if(iot1["setboard"].value.split(" ").join("") == 'GPIO.setmode(GPIO.BOARD)'){
+          board = true;
+          alert("Board is set");
+      }
+  }
+  
+  function isValidPin(pin){
+      return pins_io.includes(parseInt(pin));
+  }    
+  
+  function setLED(){
+      led_pin = parseInt(iot1["pin_for_led"].value);
+      if(isValidPin(led_pin)){
+          iot1["pin_for_led_op"].value =  led_pin;
+          iot1["pin_for_led_op_false"].value = led_pin;
+          alert("Valid Pin && LED pin set successfully");
+      }
+      else{
+          led_pin = 0;
+          alert("Pin number is not valid for input/output && LED pin not set successfully");
+      }
+  }
+  
+  function setBuzzer(){
+      buzzer_pin = parseInt(iot1["pin_for_buzzer"].value);
+      if(isValidPin(buzzer_pin)){
+          iot1["pin_for_buzzer_op"].value =  buzzer_pin;
+          iot1["pin_for_buzzer_op_false"].value = buzzer_pin;
+          alert("Valid Pin && Buzzer pin set successfully");
+      }
+      else{
+          buzzer_pin = 0;
+          alert("Pin number is not valid for input/output && Buzzer pin not set successfully");
+      }
+  }
+  
+  function setButton(){
+      button_pin = parseInt(iot1["pin_for_button"].value);
+      if(isValidPin(button_pin)){
+          iot1["pin_for_button_inp"].value = button_pin;
+          alert("Valid Pin && Button pin set successfully");
+      }
+      else{
+          button_pin = 0;
+          alert("Pin number is not valid for input/output && Button pin not set successfully");
+      }
+  }
+  
+  function setValues(){
+      if(!modules){alert("Modules not imported properly")}
+      else if(!board){alert("Board Mode not set properly")}
+      else if(led_pin == 0){alert("LED pin not set")}
+      else if(buzzer_pin == 0){alert("Buzzer pin not set")}
+      else if(button_pin == 0){alert("Button pin not set")}
+      else{
+          is_code_crct = true;
+          sleep_time=parseFloat(iot1["sleep_time"].value);
+          pressed_text=iot1["pressed_text"].value;
+          released_text=iot1["released_text"].value;
+          alert("Verified Code Sucessfully and programmed Raspberry Pi Successfully!!!");
+      }
+  }
+  
+  function fillGroundConnections(){
+      let rows = document.getElementById("groundbread");
+    for(let i=0;i<2;i++){
+      let tr = document.createElement('tr');
+      tr.classList.add('breadboard-row');
+      for(let j=1;j<=45;j++){
+        let td = document.createElement('td');
+        let p = document.createElement('span');
+        p.setAttribute("id","ground_" + i.toString() + "_" + j.toString());
+        td.appendChild(p);
+        tr.appendChild(td);
+      }
+    rows.appendChild(tr);
+    }
+  }
+  
+  $('#connectled').click(function () {
+      if(is_code_crct){var $t = $('#ledin');
+      var $i = $('#' + led_pin.toString());
+      // find offset positions for the word (t = this) and image (i)
+      var ot = {
+          x: $t.offset().left + $t.width() / 2,
+          y: $t.offset().top + $t.height() / 2
+      };
+      var oi = {
+          x: $i.offset().left + $i.width() / 2,
+          y: $i.offset().top + $i.height() / 2
+      };
+      // x,y = top left corner
+      // x1,y1 = bottom right corner
+      var p = {
+          x: ot.x < oi.x ? ot.x : oi.x,
+          x1: ot.x > oi.x ? ot.x : oi.x,
+          y: ot.y < oi.y ? ot.y : oi.y,
+          y1: ot.y > oi.y ? ot.y : oi.y
+      };
+      var c = $('<canvas/>').attr({
+          'width': p.x1 - p.x,
+          'height': p.y1 - p.y
+      }).css({
+          'position': 'absolute',
+          'left': p.x,
+          'top': p.y,
+          'z-index': 1
+      }).appendTo($('body'))[0].getContext('2d');
+  
+      // draw line
+      c.strokeStyle = '#f00';
+      c.lineWidth = 2;
+      c.beginPath();
+      c.moveTo(ot.x - p.x, ot.y - p.y);
+      c.lineTo(oi.x - p.x, oi.y - p.y);
+      c.stroke();
+      led_set = true;
+    }
+      else{
+        document.getElementById('connectled').checked = false;
+        alert('You have some mistakes in your code.Please rectify it!!!')
+      }
+  });
+  $('#connectbuzzer').click(function () {
+      if(is_code_crct){var $t = $('#buzzerin');
+      var $i = $('#' + buzzer_pin.toString());
+
+      // find offset positions for the word (t = this) and image (i)
+      var ot = {
+          x: $t.offset().left + $t.width() / 2,
+          y: $t.offset().top + $t.height() / 2
+      };
+      var oi = {
+          x: $i.offset().left + $i.width() / 2,
+          y: $i.offset().top + $i.height() / 2
+      };
+  
+      // x,y = top left corner
+      // x1,y1 = bottom right corner
+      var p = {
+          x: ot.x < oi.x ? ot.x : oi.x,
+          x1: ot.x > oi.x ? ot.x : oi.x,
+          y: ot.y < oi.y ? ot.y : oi.y,
+          y1: ot.y > oi.y ? ot.y : oi.y
+      };
+
+      // create canvas between those points
+      var c = $('<canvas/>').attr({
+          'width': p.x1 - p.x,
+          'height': p.y1 - p.y
+      }).css({
+          'position': 'absolute',
+          'left': p.x,
+          'top': p.y,
+          'z-index': 1
+      }).appendTo($('body'))[0].getContext('2d');
+  
+      // draw line
+      c.strokeStyle = '#f00';
+      c.lineWidth = 2;
+      c.beginPath();
+      c.moveTo(ot.x - p.x, ot.y - p.y);
+      c.lineTo(oi.x - p.x, oi.y - p.y);
+      c.stroke();
+      buzzer_set = true;
+    }
+      else{
+        document.getElementById('connectbuzzer').checked = false;
+        alert('You have some mistakes in your code.Please rectify it!!!')
+      }
+  });
+  $('#connectbutton').click(function () {
+      if(is_code_crct){var $t = $('#buttonin');
+      var $i = $('#'+button_pin.toString());
+
+      // find offset positions for the word (t = this) and image (i)
+      var ot = {
+          x: $t.offset().left + $t.width() / 2,
+          y: $t.offset().top + $t.height() / 2
+      };
+      var oi = {
+          x: $i.offset().left + $i.width() / 2,
+          y: $i.offset().top + $i.height() / 2
+      };
+  
+      // x,y = top left corner
+      // x1,y1 = bottom right corner
+      var p = {
+          x: ot.x < oi.x ? ot.x : oi.x,
+          x1: ot.x > oi.x ? ot.x : oi.x,
+          y: ot.y < oi.y ? ot.y : oi.y,
+          y1: ot.y > oi.y ? ot.y : oi.y
+      };
+
+      // create canvas between those points
+      var c = $('<canvas/>').attr({
+          'width': p.x1 - p.x,
+          'height': p.y1 - p.y
+      }).css({
+          'position': 'absolute',
+          'left': p.x,
+          'top': p.y,
+          'z-index': 1
+      }).appendTo($('body'))[0].getContext('2d');
+  
+      // draw line
+      c.strokeStyle = '#f00';
+      c.lineWidth = 2;
+      c.beginPath();
+      c.moveTo(ot.x - p.x, ot.y - p.y);
+      c.lineTo(oi.x - p.x, oi.y - p.y);
+      c.stroke();
+      button_set = true;
+    }
+      else{
+        document.getElementById('connectbutton').checked = false;
+        alert('You have some mistakes in your code.Please rectify it!!!')
+      }
+  });
+  $('#connectgnd').click(function () {
+      if(is_code_crct){
+      var $t = $('#buttonout');
+      var $i = $('#ground_1_17');
+      var ot = {
+          x: $t.offset().left + $t.width() / 2,
+          y: $t.offset().top + $t.height() / 2
+      };
+      var oi = {
+          x: $i.offset().left + $i.width() / 2,
+          y: $i.offset().top + $i.height() / 2
+      };
+      // x,y = top left corner
+      // x1,y1 = bottom right corner
+      var p = {
+          x: ot.x < oi.x ? ot.x : oi.x,
+          x1: ot.x > oi.x ? ot.x : oi.x,
+          y: ot.y < oi.y ? ot.y : oi.y,
+          y1: ot.y > oi.y ? ot.y : oi.y
+      };
+      var c = $('<canvas/>').attr({
+          'width': p.x1 - p.x,
+          'height': p.y1 - p.y
+      }).css({
+          'position': 'absolute',
+          'left': p.x,
+          'top': p.y,
+          'z-index': 1
+      }).appendTo($('body'))[0].getContext('2d');
+  
+      // draw line
+      c.strokeStyle = '#f00';
+      c.lineWidth = 2;
+      c.beginPath();
+      c.moveTo(ot.x - p.x, ot.y - p.y);
+      c.lineTo(oi.x - p.x, oi.y - p.y);
+      c.stroke();
+      var $t = $('#ground_1_21');
+      var $i = $('#6');
+      var ot = {
+          x: $t.offset().left + $t.width() / 2,
+          y: $t.offset().top + $t.height() / 2
+      };
+      var oi = {
+          x: $i.offset().left + $i.width() / 2,
+          y: $i.offset().top + $i.height() / 2
+      };
+      // x,y = top left corner
+      // x1,y1 = bottom right corner
+      var p = {
+          x: ot.x < oi.x ? ot.x : oi.x,
+          x1: ot.x > oi.x ? ot.x : oi.x,
+          y: ot.y < oi.y ? ot.y : oi.y,
+          y1: ot.y > oi.y ? ot.y : oi.y
+      };
+      var c = $('<canvas/>').attr({
+          'width': p.x1 - p.x,
+          'height': p.y1 - p.y
+      }).css({
+          'position': 'absolute',
+          'left': p.x,
+          'top': p.y,
+          'z-index': 1
+      }).appendTo($('body'))[0].getContext('2d');
+  
+      // draw line
+      c.strokeStyle = '#f00';
+      c.lineWidth = 2;
+      c.beginPath();
+      c.moveTo(ot.x - p.x, ot.y - p.y);
+      c.lineTo(oi.x - p.x, oi.y - p.y);
+      c.stroke();
+      gnd_set = true;}
+      else{
+        document.getElementById('connectgnd').checked = false;
+        alert('You have some mistakes in your code.Please rectify it!!!')
+      }
+  });
+  $('#connectledgnd').click(function () {
+    if(is_code_crct)
+    {  var $t = $('#ledout');
+    var $i = $('#ground_1_13');
+    var ot = {
+        x: $t.offset().left + $t.width() / 2,
+        y: $t.offset().top + $t.height() / 2
+    };
+    var oi = {
+        x: $i.offset().left + $i.width() / 2,
+        y: $i.offset().top + $i.height() / 2
+    };
+    // x,y = top left corner
+    // x1,y1 = bottom right corner
+    var p = {
+        x: ot.x < oi.x ? ot.x : oi.x,
+        x1: ot.x > oi.x ? ot.x : oi.x,
+        y: ot.y < oi.y ? ot.y : oi.y,
+        y1: ot.y > oi.y ? ot.y : oi.y
+    };
+    var c = $('<canvas/>').attr({
+        'width': p.x1 - p.x,
+        'height': p.y1 - p.y
+    }).css({
+        'position': 'absolute',
+        'left': p.x,
+        'top': p.y,
+        'z-index': 1
+    }).appendTo($('body'))[0].getContext('2d');
+
+    // draw line
+    c.strokeStyle = '#f00';
+    c.lineWidth = 2;
+    c.beginPath();
+    c.moveTo(ot.x - p.x, ot.y - p.y);
+    c.lineTo(oi.x - p.x, oi.y - p.y);
+    c.stroke();
+    led_gnd = true;
+  }
+    else{
+        document.getElementById('connectledgnd').checked = false;
+        alert('You have some mistakes in your code.Please rectify it!!!')
+    }
+  });
+  $('#connectbuzzergnd').click(function (){
+    if(is_code_crct)
+  {  var $t = $('#buzzerout');
+    var $i = $('#ground_1_15');
+    var ot = {
+        x: $t.offset().left + $t.width() / 2,
+        y: $t.offset().top + $t.height() / 2
+    };
+    var oi = {
+        x: $i.offset().left + $i.width() / 2,
+        y: $i.offset().top + $i.height() / 2
+    };
+    // x,y = top left corner
+    // x1,y1 = bottom right corner
+    var p = {
+        x: ot.x < oi.x ? ot.x : oi.x,
+        x1: ot.x > oi.x ? ot.x : oi.x,
+        y: ot.y < oi.y ? ot.y : oi.y,
+        y1: ot.y > oi.y ? ot.y : oi.y
+    };
+    var c = $('<canvas/>').attr({
+        'width': p.x1 - p.x,
+        'height': p.y1 - p.y
+    }).css({
+        'position': 'absolute',
+        'left': p.x,
+        'top': p.y,
+        'z-index': 1
+    }).appendTo($('body'))[0].getContext('2d');
+
+    // draw line
+    c.strokeStyle = '#f00';
+    c.lineWidth = 2;
+    c.beginPath();
+    c.moveTo(ot.x - p.x, ot.y - p.y);
+    c.lineTo(oi.x - p.x, oi.y - p.y);
+    c.stroke();
+    buzzer_gnd = true;
+  }
+    else{
+        document.getElementById('connectbuzzergnd').checked = false;
+        alert('You have some mistakes in your code.Please rectify it!!!')
+      }
+  });
+  $('#final_simulate').click(function(){
+    if (is_code_crct && led_set && buzzer_set && button_set && gnd_set && led_gnd && buzzer_gnd){
+      clearScreen();
+      document.getElementById('final_simulate').checked = true;
+      alert('Circuit Connections Established Successfully!!! Go to final Simulation and enjoy your simulation');
+    }
+    else{
+      document.getElementById('final_simulate').checked = false;
+      alert('Circuit Connections not connected properly!!!Check your code and connections or refresh your browser and try again');
+    }
+  });
+  function clearScreen(){
+    var cs = document.getElementsByTagName('canvas');
+    var cslen = cs.length;
+    for(let i=0;i<cslen;i++){
+      cs[i].style.display = 'none';
+    }
+  }
+  function changeImage2(){
+    var image = document.getElementById('led');
+    if (image.src.match("ledon")) {
+      image.src = "images/ledoff.png";
+    } else {
+      image.src = "images/ledon.jpg";
+    }
+    var image = document.getElementById('buzzer');
+    if (image.src.match("buzzeron")) {
+      image.src = "images/buzzer.png";
+    } else {
+      image.src = "images/buzzeron.png";
+    }
+  }
+  function changeImage() {
+    if(is_code_crct && led_set && buzzer_set && button_set && gnd_set){var image = document.getElementById('led');
+    if (image.src.match("ledon")) {
+      image.src = "images/ledoff.png";
+    } else {
+      image.src = "images/ledon.jpg";
+    }
+    
+    var image = document.getElementById('buzzer');
+    if (image.src.match("buzzeron")) {
+      image.src = "images/buzzer.png";
+    } else {
+      image.src = "images/buzzeron.png";
+    }
+    var audio = document.getElementById('chatAudio');
+		function play(){
+			audio.play()
+		}
+    play();
+    setTimeout(changeImage2,sleep_time*1000);}
+    else{
+      alert('Please finish your simulation first...')
+    }
+  }
+
+</script>
+</body>
+</html>
