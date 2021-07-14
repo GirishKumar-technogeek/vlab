@@ -12,24 +12,27 @@ LEDs will only work if power is supplied the correct way round (i.e. if the ‘p
 A simple LED circuit consists of a LED and resistor. The resistor is used to limit the current that is being drawn and is called a current limiting resistor. Without the resistor the LED would run at too high of a voltage, resulting in too much current being drawn which in turn would instantly burn the LED, and likely also the GPIO port on the Raspberry Pi.<br>
 <p align="center">
     <img src="images/led.jpg" height="300" width="400" alt="led">
+   <br>
+Basic LED interfacing<br>
+(Source : <a href="https://www.w3schools.com/nodejs/nodejs_raspberrypi_blinking_led.asp">https://www.w3schools.com/nodejs/nodejs_raspberrypi_blinking_led.asp</a>)
 </p>
-
-citation : image of led interfacing from w3schools.com
 
 ##### Push button :
 The standard form of switch used in electronics is a push button switch. This push-button SPST switches are used to either make or break a circuit by a simple push action. They generally come in the normally open (NO) configuration.<br>
 Toggle Switches make or break a circuit by moving a lever up or down and comes in SPST, SPDT, and DPDT configurations. Some toggle switches have an off position in the center, and the circuit can be turned on by moving the lever in either the up or down direction.<br>
 <p align="center">
     <img src="images/push-button.jpg" height="300" width="400" alt="push-button">
+<br>
+Push Button interfacing<br>
+(Source : <a href="https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/">https://raspberrypihq.com/use-a-push-button-with-raspberry-pi-gpio/</a>)
 </p>
-
-citation : image of button interfacing from raspberrypihq.com
 
 ##### Buzzer :
 A Piezo buzzer is a device that is used to generate beep sound (generally a warning or alert in embedded system). It is a two leg device the longer leg is positive. If voltage is supplied to it, it generates beep sound.  They work by using a piezo crystal, a special material that changes shape when voltage is applied to it.  If the crystal pushes against a diaphragm, like a tiny speaker cone, it can generate a pressure wave which the human ear picks up as sound. <br>
 Through analog write (PWM signal ) volume of beep sound can be controlled. If a buzzer is switched with different time intervals it generates a melody.<br>
 <p align="center">
     <img src="images/buzzer.jpg" height="400" width="400" alt="buzzer">
+<br>
+Piezo Buzzer interfacing<br>
+(Source : <a href="https://electropeak.com/learn/tutorial-raspberry-pi-gpio-programming-using-python-full-guide/">https://electropeak.com/learn/tutorial-raspberry-pi-gpio-programming-using-python-full-guide/</a>)
 </p>
-
-citation : image of buzzer interfacing from electropeak.com
