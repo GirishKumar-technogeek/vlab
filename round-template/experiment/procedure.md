@@ -26,7 +26,7 @@
 
 1. This simulator allows users to simulate interfacing of LED,Buzzer,Switch with Raspberry Pi board.<br>
 2. In the Experiment tab, you can get to know the aim of this experiment,how to work with this simulator and a code reference enabling you to program the raspberry pi board.<br>
-<p align="center"><img src="images/p1.png" style="image-rendering: auto;image-rendering: crisp-edges;image-rendering: pixelated;" alt="step2"></p>
+<p align="center"><img src="images/p1.png" style="height:250px;width:250px;margin-left:auto;margin-right:auto;display:block" alt="step2"></p>
 3. Using the given code below, program the raspberry pi board.<br>
 <p align="center"><img src="images/p2.png" style="image-rendering: auto;image-rendering: crisp-edges;image-rendering: pixelated;" alt="step3"></p>
 <p align="center"><img src="images/p4.png" style="image-rendering: auto;image-rendering: crisp-edges;image-rendering: pixelated;" alt="step3"></p>
