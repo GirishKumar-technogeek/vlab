@@ -15,11 +15,11 @@
 4.Type the code.<br><br>
 5.Save the code by FILE>SAVE or Ctrl+S<br><br>
 <p align="center">
-    <img src="images/4.jpg" alt="Save" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;">
+    <img src="images/4.jpg" alt="Save" style="height:auto;width:500px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;">
 </p>
 6.To run your code RUN -> RUN or Ctrl+F5<br><br>
 <p align="center">
-    <img src="images/5.png" alt="Run" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;">
+    <img src="images/5.png" alt="Run" style="height:auto;width:500px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;">
 </p>
 
 ### These procedure steps will be followed on the simulator:
