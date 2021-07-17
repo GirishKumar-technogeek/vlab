@@ -34,8 +34,8 @@
 <p align="center"><img src="images/p5.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step4"></p>
 <p align="center"><img src="images/p6.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step4"></p>
 5. In the simulation part, you can connect the LED,buzzer,push button,ground connections with a click of button.<br>
-6. Click on the Connect LED,Connect Buzzer,Connect Button,Connect Gnd Connections buttons to connect the components with GPIO pins.<br>
 <p align="center"><img src="images/p7.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
+6. Click on the Connect LED,Connect Buzzer,Connect Button,Connect Gnd Connections buttons to connect the components with GPIO pins.<br>
 <p align="center"><img src="images/p8.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
 <p align="center"><img src="images/p10.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
 <p align="center"><img src="images/p12.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
