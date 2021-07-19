@@ -1,25 +1,25 @@
 ## Pre-test
 #### Please attempt the following questions
 
-1.How power supply is done to Raspberry Pi?.<br>
+1.How power supply is done to Raspberry Pi ?<br>
 **a) USB connection**<br>
 b) Internal battery<br>
 c) Charger<br>
 d) Adapter<br>
 
-2.What are the distributions are supported by raspberry Pi?<br>
+2.What are the distributions are supported by Raspberry Pi ?<br>
 a) Arch Linux<br>
 b) Debain<br>
 c) Fedora Remix<br>
 **d) Arch Linux, Debain, and Fedora Remix**<br>
 
-3.How many USB ports are present in Raspberry Pi 3?<br>
+3.How many USB ports are present in Raspberry Pi 3 ?<br>
 a) 5<br>
 b) 2<br>
 **c) 4**<br>
 d) 3<br>
 
-4.How many Input/Output pins on board Raspberry Pi3 has?<br>
+4.How many Input/Output pins on board Raspberry Pi 3 has ?<br>
 a) 20<br>
 b) 30<br>
 **c) 40**<br>
