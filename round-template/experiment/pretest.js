@@ -80,7 +80,7 @@
 
   const myQuestions = [
     {
-      question: " How power supply is done to Raspberry Pi?",
+      question: " How power supply is done to Raspberry Pi ?",
       answers: {
         a: "USB connection",
         b: "Internal battery",
@@ -91,7 +91,7 @@
     },
 
     {
-      question: "What are the distributions are supported by raspberry Pi?",
+      question: "What are the distributions are supported by Raspberry Pi ?",
       answers: {
         a: "Arch Linux",
         b: "Debain",
@@ -102,7 +102,7 @@
     },
 
     {
-      question: "How many USB ports are present in Raspberry Pi 3?",
+      question: "How many USB ports are present in Raspberry Pi 3 ?",
       answers: {
         a: "5",
         b: "2",
@@ -112,7 +112,7 @@
       correctAnswer: "c"
     },
     {
-      question: "How many Input/Output pins on board Raspberry Pi3 has?",
+      question: "How many Input/Output pins on board Raspberry Pi 3 has ?",
       answers: {
         a: "20",
         b: "30",
@@ -122,7 +122,7 @@
       correctAnswer: "c"
     },
     {
-      question: "What does GPIO stands for?",
+      question: "What does GPIO stands for ? ",
       answers: {
         a: "General Purpose Inner Outer Propeller",
         b: "General Purpose Input Output Pins",
