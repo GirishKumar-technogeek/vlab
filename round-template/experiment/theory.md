@@ -2,6 +2,11 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internet Of Things(IOT) is a term that refers to a system of interrelated things such as digital machines,electrical and electronic devices etc  which have sensors, software, and other technologies and has the ability to transfer data over a network without requiring human-to-human or human-to-computer interaction.IOT works on the principle **"Anything that can be connected, will be connected"**.<br>
 
+##### <u> RASPBERRY PI </u>
+The Raspberry Pi is a small, affordable, and amazingly capable, credit card size computer.
+It is developed by the Raspberry Pi Foundation, and it might be the most versatile tech ever created.Creator Eben Upton's goal was to create a low-cost device that would improve programming skills and hardware understanding.Due to the small size and price of the device, it has become the center of a wide range of projects by tinkerers, makers, and electronics enthusiasts.The Raspberry Pi has a row of GPIO (General Purpose input/output) pins, and these can be used to interact in amazing ways with the real world.
+<br>
+
 ##### <u> LED </u>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LED stands for Light Emitting Diode, and glows when electricity is passed through it.The LED will have two terminals, you can notice one leg is longer than the other. The longer leg (known as the ‘anode’), is always connected to the positive supply of the circuit. The shorter leg (known as the ‘cathode’) is connected to the negative side of the power supply, known as ‘ground’.LEDs will only work if power is supplied the correct way round (i.e. if the ‘polarity’ is correct). You will not break the LEDs if you connect them the wrong way round – they will just not light. If the LED does not light in your circuit, it may be because of that, it have been connected the wrong way round.A simple LED circuit consists of a LED and resistor. The resistor is used to limit the current that is being drawn and is called a current limiting resistor. Without the resistor the LED would run at too high of a voltage, resulting in too much current being drawn which in turn would instantly burn the LED, and likely also the GPIO port on the Raspberry Pi.<br>
 <p align="center">
