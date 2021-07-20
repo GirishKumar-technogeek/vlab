@@ -37,13 +37,13 @@
 <p align="center"><img src="images/p7.jpg" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
 6. Click on the Connect LED,Connect Buzzer,Connect Button,Connect Gnd Connections buttons to connect the components with GPIO pins.<br>
 <p align="center"><img src="images/p8.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
-<p align="center"><img src="images/p10.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
-<p align="center"><img src="images/p12.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
-<p align="center"><img src="images/p14.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
-<p align="center"><img src="images/p15.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
+<p align="center"><img src="images/p10.jpg" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
+<p align="center"><img src="images/p12.jpg" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
+<p align="center"><img src="images/p14.jpg" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
+<p align="center"><img src="images/p15.jpg" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
 <p align="center"><img src="images/p16.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step6"></p>
 7. Once you connect all the components, click the simulate button which will check the correctness of the circuit and gives you the result as alert.<br>
-<p align="center"><img src="images/p17.png" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step7"></p>
+<p align="center"><img src="images/p17.jpg" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step7"></p>
 8. Once the simulation is successful click on the final simulation tab.<br>
 <p align="center"><img src="images/p18.jpg" style="height:auto;width:900px;margin-left:auto;margin-right:auto;display:block;border: 2px solid black;" alt="step8"></p>
 9. Click the Push button and you can note that LED and buzzer is in ON state for the time interval you mentioned during the programming step.<br>
